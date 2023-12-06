@@ -125,7 +125,6 @@ fun MorphingScreen(
     }
 }
 
-
 private val shapes: List<RoundedPolygon> = listOf(
     // Row 1: Unrounded
     RoundedPolygon(3),
@@ -138,4 +137,6 @@ private val shapes: List<RoundedPolygon> = listOf(
     RoundedPolygon(6, rounding = CornerRounding(.2f)),
     RoundedPolygon.star(6, rounding = CornerRounding(.2f), innerRounding = CornerRounding(.2f)),
     RoundedPolygon.star(12, innerRadius = .9f, rounding = CornerRounding(.1f), innerRounding = CornerRounding(.1f)),
+    RoundedPolygon.star(8, innerRadius = 0.4f, rounding = CornerRounding(1f), innerRounding = CornerRounding(0f)),
+    RoundedPolygon.star(12, innerRadius = 0.4f, innerRounding = CornerRounding(.6f)),
 )

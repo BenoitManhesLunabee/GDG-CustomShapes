@@ -11,14 +11,15 @@ import androidx.core.graphics.PathParser
 import java.util.regex.Pattern
 
 class SvgShape(
-    private val viewportSize: Size,
+    private val viewBox: Size,
     private val pathData: String,
     private val scale: ContentScale = ContentScale.Fit,
 ) : Shape {
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
-        val scaleFactor = scale.computeScaleFactor(srcSize = viewportSize, dstSize = size)
+        val scaleFactor = scale.computeScaleFactor(srcSize = viewBox, dstSize = size)
+        val resizedPathData = resize(pathData, scaleFactor.scaleX, scaleFactor.scaleY)
         return Outline.Generic(
-            PathParser.createPathFromPathData(resize(pathData, scaleFactor.scaleX, scaleFactor.scaleY)).asComposePath()
+            PathParser.createPathFromPathData(resizedPathData).asComposePath()
         )
     }
 

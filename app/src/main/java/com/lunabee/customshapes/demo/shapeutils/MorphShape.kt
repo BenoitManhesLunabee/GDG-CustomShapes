@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.AndroidPath
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.asComposePath
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.graphics.shapes.Morph
@@ -15,9 +16,7 @@ class MorphShape(
 ) : Shape {
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
         val morphResized = resizeMaybe(morph, size)
-        val path = Path().apply {
-            addPath(AndroidPath(morphResized.asPath()))
-        }
+        val path = morphResized.asPath().asComposePath()
         return Outline.Generic(path)
     }
 

@@ -3,10 +3,9 @@ package com.lunabee.customshapes.demo.shapeutils
 import android.graphics.Matrix
 import android.graphics.RectF
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.AndroidPath
 import androidx.compose.ui.graphics.Outline
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.asComposePath
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.graphics.shapes.RoundedPolygon
@@ -14,13 +13,11 @@ import kotlin.math.abs
 import kotlin.math.min
 
 class RoundedPolygonShape(
-    val roundedPolygon: RoundedPolygon,
+    private val roundedPolygon: RoundedPolygon,
 ) : Shape {
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
         val sizedRoundedPolygon = resizeMaybe(roundedPolygon, size)
-        val path = Path().apply {
-            addPath(AndroidPath(sizedRoundedPolygon.toPath()))
-        }
+        val path = sizedRoundedPolygon.toPath().asComposePath()
         return Outline.Generic(path)
     }
 
