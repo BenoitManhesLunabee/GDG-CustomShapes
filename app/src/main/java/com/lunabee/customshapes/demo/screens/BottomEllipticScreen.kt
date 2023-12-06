@@ -1,6 +1,5 @@
 package com.lunabee.customshapes.demo.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,19 +11,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import com.lunabee.customshapes.R
-import com.lunabee.customshapes.demo.shapeutils.BottomEllipticShape
-import com.lunabee.customshapes.demo.ui.composable.TopBar
-import com.lunabee.customshapes.demo.ui.res.Gradients
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
+import com.lunabee.customshapes.demo.shapeutils.BottomEllipticShape
+import com.lunabee.customshapes.demo.ui.composable.TopBar
 import com.lunabee.customshapes.demo.ui.res.Dimens
+import com.lunabee.customshapes.demo.ui.res.Gradients
 import com.lunabee.customshapes.demo.ui.theme.spacing
 
 const val BottomEllipticScreenRoute: String = "bottom-elliptic"
@@ -43,15 +38,6 @@ fun BottomEllipticScreen(
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-//            Image(
-//                painter = painterResource(id = R.drawable.pelvoux),
-//                contentDescription = null,
-//                contentScale = ContentScale.Crop,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .weight(1f)
-//                    .clip(BottomEllipticShape(1.24f, 1.08f))
-//            )
             Box(
                 modifier = Modifier
                     .fillMaxWidth()

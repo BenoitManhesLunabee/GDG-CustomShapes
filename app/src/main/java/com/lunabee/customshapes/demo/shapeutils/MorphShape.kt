@@ -30,25 +30,3 @@ class MorphShape(
         return morph
     }
 }
-
-class MorphShape2(
-    val morph: Morph,
-) : Shape {
-    override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
-        val morphResized = resizeMaybe(morph, size)
-        val path = Path().apply {
-            addPath(AndroidPath(morphResized.asPath()))
-        }
-        return Outline.Generic(path)
-    }
-
-    private fun resizeMaybe(morph: Morph, newSize: Size): Morph {
-        val width = morph.bounds.width()
-        val height = morph.bounds.height()
-        if (abs(width - newSize.width) > 1e-4 || abs(height - newSize.height) > 1e-4) {
-            val matrix = calculateMatrix(morph.bounds, newSize.width, newSize.height)
-            morph.transform(matrix)
-        }
-        return morph
-    }
-}
